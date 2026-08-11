@@ -19,29 +19,11 @@ def clickbut(number):  # lambda:clickbut(1)
 
 def equlbut():
     global operator
-    add = str(eval(operator))
-    textin.set(add)
-    operator = ''
-
-
-def equlbut():
-    global operator
-    sub = str(eval(operator))
-    textin.set(sub)
-    operator = ''
-
-
-def equlbut():
-    global operator
-    mul = str(eval(operator))
-    textin.set(mul)
-    operator = ''
-
-
-def equlbut():
-    global operator
-    div = str(eval(operator))
-    textin.set(div)
+    try:
+        ans = str(eval(operator))
+        textin.set(ans)
+    except Exception as e:
+        textin.set("Error")
     operator = ''
 
 
@@ -117,4 +99,5 @@ butclear.place(x=270, y=100)
 
 butequal = Button(me, padx=151, pady=14, bd=4, bg='white', command=equlbut, text="=", font=("Courier New", 16, 'bold'))
 butequal.place(x=10, y=380)
-me.mainloop()
+if __name__ == "__main__":
+    me.mainloop()

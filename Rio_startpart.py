@@ -6,7 +6,10 @@ import datetime
 import time
 import os
 import sys
-import winsound
+try:
+    import winsound
+except ImportError:
+    winsound = None
 import wikipedia
 import webbrowser
 import pyjokes
@@ -275,7 +278,10 @@ def alarm(Timing):
             if horeal==datetime.datetime.now().hour:
                 if mireal==datetime.datetime.now().minute:
                     print("alarm is running")
-                    winsound.PlaySound("abc",winsound.SND_LOOP)
+                    if winsound:
+                        winsound.PlaySound("abc",winsound.SND_LOOP)
+                    else:
+                        print("\a[ALARM RINGING]")
                     #Winsound.Beep(1, 10)
 
                 elif mireal<datetime.datetime.now().minute:
